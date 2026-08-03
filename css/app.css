@@ -1,0 +1,34 @@
+*{box-sizing:border-box}
+:root{color-scheme:dark;--bg:#03101c;--panel:rgba(8,25,43,.90);--border:rgba(255,255,255,.10);--text:#f4f8fb;--muted:#9db0c0;--accent:#54e1c2;--good:#4fe08a;--watch:#ffb85f;--alert:#ff6b7a}
+body{margin:0;min-height:100vh;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 80% 0%,rgba(84,225,194,.14),transparent 28%),linear-gradient(135deg,#071a2c,var(--bg))}
+.app-shell{width:min(1500px,calc(100% - 28px));margin:0 auto;padding:24px 0 40px}
+.command-header,.reef-brain,.status-grid article,.workspace-card{border:1px solid var(--border);background:var(--panel);box-shadow:0 18px 44px rgba(0,0,0,.24);backdrop-filter:blur(16px)}
+.command-header{padding:22px;border-radius:24px}
+.command-top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:18px;color:var(--muted);font-size:.82rem}
+.live-pill{display:inline-flex;align-items:center;gap:8px;color:var(--good);font-size:.74rem;font-weight:800;text-transform:uppercase;letter-spacing:.07em}
+.live-dot{width:9px;height:9px;border-radius:50%;background:var(--good);box-shadow:0 0 0 0 rgba(79,224,138,.42);animation:pulse 1.8s infinite}
+.command-main{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:24px;align-items:end}
+.eyebrow{color:var(--accent);text-transform:uppercase;letter-spacing:.08em;font-weight:800;font-size:.76rem}
+h1{margin:7px 0 8px;font-size:clamp(2rem,4vw,3.5rem);letter-spacing:-.045em;line-height:1}
+.command-main p{margin:0;color:var(--muted);line-height:1.5}
+.score-grid{display:grid;grid-template-columns:repeat(2,minmax(110px,1fr));gap:10px}
+.score-card{padding:14px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07);text-align:center}
+.score-card span,.reef-brain article span{display:block;color:var(--muted);font-size:.68rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.score-card strong{font-size:1.25rem}
+.system-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-top:16px}
+.system-item{display:grid;grid-template-columns:auto 1fr;gap:2px 8px;align-items:center;padding:10px;border-radius:13px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.055)}
+.system-item>span{grid-row:1/3;width:9px;height:9px;border-radius:50%;background:var(--watch)}
+.system-item.online>span{background:var(--good)}.system-item.offline>span{background:var(--alert)}
+.system-item strong{font-size:.7rem;text-transform:uppercase;letter-spacing:.05em}.system-item small{color:var(--muted);font-size:.67rem}
+.reef-brain{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(260px,.6fr);gap:16px;padding:20px;border-radius:22px;margin-top:16px}
+.reef-brain h2{margin:7px 0 8px;font-size:1.35rem}.reef-brain p{margin:0;color:var(--muted);line-height:1.55}
+.brain-side{display:grid;grid-template-columns:1fr 1fr;gap:10px}.brain-side article{padding:13px;border-radius:15px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.065)}
+.status-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:12px;margin-top:16px}
+.status-grid article{padding:16px;border-radius:18px}
+.status-grid span{display:block;color:var(--muted);font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.status-grid strong{font-size:1.18rem}.status-grid small{display:block;margin-top:7px;color:var(--muted);font-size:.72rem}
+.status-grid article.good small{color:var(--good)}.status-grid article.watch small{color:var(--watch)}.status-grid article.alert small{color:var(--alert)}
+.workspace{display:grid;grid-template-columns:1.4fr .6fr;gap:14px;margin-top:16px}.workspace-card{padding:18px;border-radius:20px}.workspace-card h2{margin:0 0 10px}.workspace-card p,.workspace-card li{color:var(--muted);line-height:1.5}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(79,224,138,.35)}50%{box-shadow:0 0 0 7px rgba(79,224,138,0)}}
+@media(max-width:1000px){.status-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.workspace,.reef-brain{grid-template-columns:1fr}.system-row{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:650px){.command-main{grid-template-columns:1fr}.score-grid{grid-template-columns:1fr 1fr}.status-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.brain-side{grid-template-columns:1fr}}

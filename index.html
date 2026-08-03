@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mission Control X v2</title>
+  <link rel="stylesheet" href="/local/mission-control-v2/css/app.css?v=2">
+  <link rel="stylesheet" href="/local/mission-control-v2/css/digital-twin.css?v=1">
+  <link rel="stylesheet" href="/local/mission-control-v2/css/quick-actions.css?v=1">
+</head>
+<body>
+  <main class="app-shell">
+    <section class="command-header">
+      <div class="command-top">
+        <div class="live-pill"><span class="live-dot"></span>Mission Control Online</div>
+        <div id="clock">--:--</div>
+      </div>
+
+      <div class="command-main">
+        <div>
+          <div class="eyebrow">Mission Control X v2</div>
+          <h1>Dreams of Tahiti</h1>
+          <p id="mission">Waiting for Reef Doctor...</p>
+        </div>
+
+        <div class="score-grid">
+          <div class="score-card">
+            <span>Health</span>
+            <strong id="health">--</strong>
+          </div>
+          <div class="score-card">
+            <span>Confidence</span>
+            <strong id="confidence">--</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="system-row" id="system-row">
+        <div class="system-item watch"><span></span><strong>Home Assistant</strong><small>Connecting</small></div>
+        <div class="system-item watch"><span></span><strong>Apex</strong><small>Checking</small></div>
+        <div class="system-item watch"><span></span><strong>Trident</strong><small>Checking</small></div>
+        <div class="system-item watch"><span></span><strong>Live Data</strong><small>Waiting</small></div>
+      </div>
+    </section>
+
+    <section class="reef-brain">
+      <div>
+        <div class="eyebrow">Reef Brain</div>
+        <h2 id="brain-headline">Analyzing the reef...</h2>
+        <p id="brain-summary">Waiting for enough live data to produce a reliable assessment.</p>
+      </div>
+
+      <div class="brain-side">
+        <article><span>Priority</span><strong id="priority">Waiting</strong></article>
+        <article><span>Last Analysis</span><strong id="analysis-time">--</strong></article>
+      </div>
+    </section>
+
+    <section class="status-grid">
+      <article data-key="temperature"><span>Temperature</span><strong id="temperature">--</strong><small id="temperature-status">Waiting</small></article>
+      <article data-key="salinity"><span>Salinity</span><strong id="salinity">--</strong><small id="salinity-status">Waiting</small></article>
+      <article data-key="ph"><span>pH</span><strong id="ph">--</strong><small id="ph-status">Waiting</small></article>
+      <article data-key="alkalinity"><span>Alkalinity</span><strong id="alkalinity">--</strong><small id="alkalinity-status">Waiting</small></article>
+      <article data-key="calcium"><span>Calcium</span><strong id="calcium">--</strong><small id="calcium-status">Waiting</small></article>
+      <article data-key="magnesium"><span>Magnesium</span><strong id="magnesium">--</strong><small id="magnesium-status">Waiting</small></article>
+    </section>
+
+
+    <section class="quick-actions-panel">
+      <div class="quick-actions-head">
+        <div>
+          <div class="eyebrow">Command Center</div>
+          <h2>Quick Actions</h2>
+        </div>
+        <p>Run common reef operations without leaving Mission Control X v2.</p>
+      </div>
+
+      <div class="quick-actions-grid">
+        <button class="quick-action" type="button" data-domain="button" data-service="press" data-entity="button.reef_feed_cycle_a">
+          <span class="quick-action-icon">▶</span><strong>Feed Cycle A</strong><small>Start the configured feed cycle.</small>
+        </button>
+
+        <button class="quick-action" type="button" data-domain="button" data-service="press" data-entity="button.reef_intelligence_analyze_reef">
+          <span class="quick-action-icon">🧪</span><strong>Analyze Reef</strong><small>Run a fresh Reef Brain analysis.</small>
+        </button>
+
+        <button class="quick-action" type="button" data-domain="button" data-service="press" data-entity="button.reef_snapshot">
+          <span class="quick-action-icon">📸</span><strong>Reef Snapshot</strong><small>Capture the current reef reference.</small>
+        </button>
+
+        <button class="quick-action" type="button" data-timeline-event="Water change completed">
+          <span class="quick-action-icon">💧</span><strong>Log Water Change</strong><small>Add a maintenance event to the local timeline.</small>
+        </button>
+      </div>
+
+      <div class="quick-action-status" id="quick-action-status">Ready for command.</div>
+    </section>
+
+    <section class="digital-twin">
+      <div class="twin-head">
+        <div>
+          <div class="eyebrow">Reef Digital Twin</div>
+          <h2>Dreams of Tahiti Livestock Map</h2>
+          <p>Click an animal or coral to open its profile. Add your real livestock below.</p>
+        </div>
+        <div class="live-pill">Digital Twin v2</div>
+      </div>
+
+      <div class="twin-grid">
+        <div class="twin-map" id="twin-map"></div>
+
+        <div class="twin-side">
+          <div class="twin-card">
+            <span>Selected</span>
+            <strong id="twin-selected">Choose a coral or livestock group</strong>
+          </div>
+
+          <div class="twin-card">
+            <span>Status</span>
+            <strong id="twin-selected-status">Waiting</strong>
+          </div>
+
+          <div class="twin-card">
+            <span>Observation focus</span>
+            <strong id="twin-selected-note">Select an item on the map.</strong>
+          </div>
+
+          <div class="twin-card">
+            <span>Livestock editor</span>
+            <div class="twin-editor">
+              <div class="twin-editor-row">
+                <input id="twin-name" type="text" placeholder="Name">
+                <input id="twin-type" type="text" placeholder="Type">
+              </div>
+
+              <div class="twin-editor-row">
+                <select id="twin-status">
+                  <option value="good">Stable</option>
+                  <option value="watch">Watch</option>
+                  <option value="alert">Action Required</option>
+                </select>
+                <input id="twin-position" type="text" placeholder="Position 50,50">
+              </div>
+
+              <textarea id="twin-note" placeholder="Observation note"></textarea>
+
+              <div class="twin-editor-actions">
+                <button id="twin-add" type="button">Add Livestock</button>
+                <button id="twin-reset" type="button">Reset Defaults</button>
+              </div>
+
+              <div class="twin-list" id="twin-list"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="workspace">
+      <div class="workspace-card">
+        <h2>v2 Build Status</h2>
+        <p>This modular version now includes the new Command Center and Reef Brain foundation.</p>
+        <ul>
+          <li>Your current Mission Control X remains untouched.</li>
+          <li>Live Home Assistant state updates are connected.</li>
+          <li>Next: history charts, quick actions, and the Digital Twin.</li>
+        </ul>
+      </div>
+
+      <div class="workspace-card">
+        <h2>Connection</h2>
+        <p id="connection">Waiting for Home Assistant...</p>
+        <p id="updated">Last updated: --</p>
+      </div>
+    </section>
+  </main>
+
+  <script src="/local/mission-control-v2/js/digital-twin.js?v=1"></script>
+  <script src="/local/mission-control-v2/js/quick-actions.js?v=1"></script>
+  <script src="/local/mission-control-v2/js/app.js?v=2"></script>
+</body>
+</html>
